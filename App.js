@@ -12,6 +12,8 @@ import {
   View,
   Button
 } from 'react-native';
+import Anaytics from 'appcenter-analytics';
+import codePush from "react-native-code-push";
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -20,7 +22,7 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
-export default class App extends Component {
+class App extends Component {
 
  
   constructor(props) {
@@ -28,8 +30,13 @@ export default class App extends Component {
     this.state = {increment:0}
   }
 
+  trackClick(eventName){
+    Anaytics.trackEvent(eventName)
+  }
+
   incrementOnClick = () =>{
-    this.setState({increment: this.state.increment+1});
+    trackClick('Increment Clicked');
+    this.setState({increment: this.state.increment+7});
   }
 
   render() {
@@ -69,3 +76,5 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
+
+export default codePush(MyApp);
