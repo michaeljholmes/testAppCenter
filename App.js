@@ -35,7 +35,7 @@ class App extends Component {
   }
 
   incrementOnClick = () =>{
-    trackClick('Increment Clicked');
+    this.trackClick('Increment Clicked');
     this.setState({increment: this.state.increment+7});
   }
 
